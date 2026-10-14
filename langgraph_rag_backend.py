@@ -12,7 +12,6 @@ from dotenv import load_dotenv
 from langchain_core.messages import BaseMessage, HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import tool
-from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import END, START, StateGraph
@@ -21,7 +20,7 @@ from langgraph.prebuilt import ToolNode, tools_condition
 
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv()
@@ -32,7 +31,8 @@ MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
 
 model = ChatGoogleGenerativeAI(model=MODEL_NAME)
 
-embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "models/text-embedding-004")
+embeddings = GoogleGenerativeAIEmbeddings(model=EMBED_MODEL)
 
 SERVERS = {
     "mashfiq-tools": {
