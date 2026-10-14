@@ -8,8 +8,6 @@ langchain-google-genai
 langchain-mcp-adapters
 langchain-text-splitters
 langchain-community
-langchain-huggingface
-sentence-transformers
 faiss-cpu
 pypdf
 
