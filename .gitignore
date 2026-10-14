@@ -1,0 +1,22 @@
+# secrets
+.env
+
+# local state
+chatbot.db
+chatbot.db-shm
+chatbot.db-wal
+*.db
+*.db-shm
+*.db-wal
+
+# python
+__pycache__/
+*.py[cod]
+myvenv/
+venv/
+.venv/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
