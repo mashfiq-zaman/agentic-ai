@@ -243,7 +243,14 @@ if user_input:
                     if text:
                         yield text
 
-        ai_message = st.write_stream(ai_only_stream())
+        try:
+            ai_message = st.write_stream(ai_only_stream())
+        except Exception as exc:
+            if "429" in str(exc) or "RateLimit" in type(exc).__name__:
+                ai_message = "I've hit the API rate limit. Please try again in a minute."
+            else:
+                ai_message = f"Something went wrong: {type(exc).__name__}"
+            st.error(ai_message)
 
         if status_holder['box'] is not None:
             status_holder['box'].update(
