@@ -4,6 +4,7 @@ import streamlit as st
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
 from langgraph_rag_backend import (
+    MODEL_NAME,
     TOOL_NAMES,
     delete_thread,
     document_info,
