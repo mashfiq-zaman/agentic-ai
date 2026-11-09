@@ -31,7 +31,7 @@ MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash")
 
 model = ChatGoogleGenerativeAI(model=MODEL_NAME)
 
-EMBED_MODEL = os.environ.get("EMBED_MODEL", "models/text-embedding-004")
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "models/gemini-embedding-001")
 embeddings = GoogleGenerativeAIEmbeddings(model=EMBED_MODEL)
 
 SERVERS = {
